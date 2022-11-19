@@ -1,8 +1,4 @@
 body{
-    margin: 0 max(5vw, 10px);
+    margin: 0 max(2.5vw, 10px);
     font-size: 0.9em;
-}
-
-.banner{
-    width: 84vw;
 }
