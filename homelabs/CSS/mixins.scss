@@ -1,0 +1,50 @@
+$breakpoints: (
+    "xs" : 300px,
+    "sm" : 700px,
+    "md" : 1000px,
+    "lg" : 1400px,
+);
+@mixin xs {
+    @media (max-width:map-get($breakpoints, "xs")) {
+        @content;
+    }  
+}
+@mixin sm {
+    @media (max-width:map-get($breakpoints, "sm")) {
+        @content;
+    }  
+}
+@mixin md {
+    @media (max-width:map-get($breakpoints, "md")) {
+        @content;
+    }  
+}
+@mixin lg {
+    @media (max-width:map-get($breakpoints, "lg")) {
+        @content;
+    }  
+}
+@mixin xs {
+    @media (max-width:map-get($breakpoints, "xs")) {
+        @content;
+    }  
+}
+@mixin button($xsize, $ysize, $textSize) {
+    padding: $ysize $xsize;
+    background-color: $sec_color;
+    color: $inactiveTextColor;
+    font-size: $textSize;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    border: solid 2px $sec_color ;
+    transition: all 0.5s ease-out;
+    border-radius: 15px;
+    width: fit-content;
+    cursor: pointer;
+    &:hover{
+        background-color: rgb(0,0,0,0);
+        color: $sec_color;
+    }
+
+}

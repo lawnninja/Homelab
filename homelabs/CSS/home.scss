@@ -1,9 +1,11 @@
+@import "mixins";
 $pri_color: #2c365e;
 $sec_color: #a66cff;
 $not_selected: #424242;
 $selected: #000000;
 $background: #e9e9e9;
-
+$textColor:#242424;
+$inactiveTextColor:#F3F3F3;
 @mixin corners($radius: 15px) {
     border-radius: $radius;
 }
@@ -42,7 +44,7 @@ body {
     font-family: "Work Sans", serif;
     text-decoration: none;
     font-weight: 400;
-    margin-top: 2vh;
+    margin-top: 30px;
     margin-left: 10vw;
     margin-right: 10vw;
     display: flex;
@@ -77,11 +79,11 @@ h2 {
     @include corners;
     @include b_padding;
     @include transition;
-    @include hover($pri_color);
-    margin-right: 1.5vw;
-    float: right;
-    color: #fff;
-    background-color: $sec_color;
+    @include button(15px, 10px, 20px);
+    color: $inactiveTextColor;
+    @include sm{
+        @include button(15px, 10px, 16px);
+    }
 }
 
 .banner {
@@ -90,12 +92,33 @@ h2 {
     width: 92.5%;
     top: 1vmin;
     margin: 0 auto;
-    padding: 3vmax;
+    padding: 3vw;
     color: #fff;
     background-color: $pri_color;
     font-size: 200%;
+    background-image: url('../img/border\ img.png');
+    background-repeat: no-repeat;
+    background-position: 90%;
+    background-size: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     h1 {
         text-align: left;
+        @include sm{
+            font-size: max(7.1vw, 30px);
+        }
+    }
+    button{
+        @include button(35px, 15px, 20px);
+        @include sm{
+            @include button(20px, 10px, 20px )
+        }
+    }
+    @include sm{
+        background-image: none;
+        width:90%;
+        padding: max(1vw, 24px) max(1vw, 15px);
     }
 }
 
@@ -223,8 +246,9 @@ h2 {
 }
 
 .flexwrap {
-    @include flex;
+    display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .f_around {
@@ -262,20 +286,101 @@ nav ul li a {
         transition-timing-function: ease-in-out;
     }
 }
-
+header{
+    padding: 15px 30px;
+    background-color: $background; 
+    display: flex;
+    align-items: center;
+    gap:20px;
+    @include corners;
+    a{
+        cursor: pointer;
+    }
+    @include md{
+        justify-content: space-between;
+    }
+    .burger{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        .line{
+            border-radius: 20px;
+            background-color: $pri_color;
+        }
+        .line:nth-child(1){
+            width: 40px;
+            height: 6px;
+        }
+        .line:nth-child(2){
+            width: 50px;
+            height: 6px
+        }
+        .line:nth-child(3){
+            width: 40px;
+            height: 6px;
+        }
+        @include md{
+            display: flex;
+        }
+    }
+}
 nav.stroke {
     @include corners;
-    padding: 0.5%;
-    padding-bottom: 0.1%;
-    background-color: $background;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    @include md{
+        position: absolute;
+        background-color: $background;
+        padding: 20px 0;
+        flex-direction: row;
+        width: 94.3%;
+        border: 20px;
+        margin-left: -27px;
+        justify-content: space-around;
+        opacity: 0;
+        z-index: -1;
+        transition: all 0.5s ease-out;
+        transform: translateY(80px);
+        &.active{
+            transform: translateY(100px);
+            opacity: 1;
+            z-index: 20;
+        }
+    }
+    @include sm{
+        padding: max(6vw, 5px) 0;
+        flex-direction: column;
+        width: 95%;
+        opacity: 0;
+        margin-left:-30px;
+        z-index: -1;
+        transition: all 0.5s ease-out;
+        transform: translateY(180px);
+        &.active{
+            z-index: 20;
+            transform: translateY(max(32vw, 210px));
+            opacity: 1;
+        }
+    }
     ul{
+        padding: 0;
         display: flex;
         flex-direction: row;
         gap:22px;
         align-items: center;
+        @include md{
+            flex-direction: row;
+            gap: 22px;
+        }
+        @include sm{
+            flex-direction: column;
+
+        }
     }
     ul li {
         display: flex;
@@ -319,3 +424,67 @@ nav.stroke {
         }
     }
 // discipline buttons
+.disciplines-block{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    gap:20px;
+    @include md{
+        grid-template-columns: auto auto;
+    }
+    @include sm{
+        grid-template-columns: auto;
+    }
+    a{
+        width: max(15vw, 200px);
+        padding: max(3vw, 40px) max(2vw, 20px);
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        border-radius: 20px;
+        background-color: $background;
+        height: fit-content;
+        transition: all .5s ease-out;
+        &:hover{
+            background-color: #2c365e;
+        }
+        &:hover p{
+            color: $sec_color;
+        }
+        &:hover .circle{
+            fill: $sec_color;
+        }
+        @include lg{
+            width: max(18vw, 180px);
+        }
+        @include md{
+            width: max(36vw, 230px);
+            padding: max(5vw, 40px) max(4vw, 20px);
+        }
+        @include sm{
+            width: max(80vw, 230px);
+
+        }
+        p{
+            margin: 0;
+            font-weight: 700;
+            font-size: 2.6vw;
+            line-height: 100%;
+            color: $textColor;
+            @include md{
+                font-size: max(3vw, 36px);
+            }
+            @include sm{
+                font-size: max(5wv, 30px);
+            }
+            transition: all .5s ease-out;
+        }
+        svg{
+            width: 100%;
+            .circle{
+                fill: $pri_color;
+                transition: all .5s ease-out;
+            }
+        }
+    }
+}

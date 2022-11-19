@@ -1,5 +1,4 @@
 body{
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin: 0 max(10vw, 50px);
     font-size: 1em;
 }

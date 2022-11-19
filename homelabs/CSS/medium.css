@@ -1,5 +1,4 @@
 body{
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin: 0 max(2.5vw, 10px);
     font-size: 0.9em;
 }
