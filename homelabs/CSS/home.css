@@ -185,9 +185,10 @@ h2 {
   transition: all 0.5s;
   transition-timing-function: ease-in-out;
 }
-.classes:hover {
+
+.classes.active {
   background-color: #a66cff;
-  color: #fff;
+  color: #F3F3F3;
 }
 
 .matter {

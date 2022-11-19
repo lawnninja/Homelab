@@ -126,9 +126,13 @@ h2 {
     @include corners;
     @include b_padding;
     @include transition;
-    @include hover($sec_color);
     color: $not_selected;
     background-color: $background;
+}
+.classes.active{
+    background-color: $sec_color;
+    color: $inactiveTextColor;
+
 }
 
 .matter {
