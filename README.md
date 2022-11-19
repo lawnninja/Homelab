@@ -1,5 +1,6 @@
 # Homelab
 Homelab website
+https://lawnninja.github.io/Homelab/homelabs/
 
 This website is being currently developed
 
