@@ -24,11 +24,7 @@ $breakpoints: (
         @content;
     }  
 }
-@mixin xs {
-    @media (max-width:map-get($breakpoints, "xs")) {
-        @content;
-    }  
-}
+
 @mixin button($xsize, $ysize, $textSize) {
     padding: $ysize $xsize;
     background-color: $sec_color;
