@@ -98,11 +98,13 @@ h2 {
 .banner {
   border-radius: 15px;
   position: static;
+  width: 74vw;
   top: 1vmin;
   margin: 0 auto;
   padding: 3vw;
   color: #fff;
   background-color: #2c365e;
+  background-position: 90%;
   font-size: 200%;
   background-image: url("../img/border img.png");
   background-repeat: no-repeat;
