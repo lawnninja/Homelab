@@ -23,12 +23,39 @@ classButtons.forEach((item, index) =>{
     item.addEventListener("click", ()=>{
         let active = index;
         filterClass(active);
+        disciplineSelector(active);
         if(classButtons[active].classList.contains("active")){
             classButtons[active].addEventListener("click", () =>{
-                console.log("hello")
                 classButtons[active].classList.toggle("active");
+                disciplineSelector(active);
             });
         };
     })
 })
 
+//disciplines buttons------------------------------------------------
+const disciplines = document.querySelectorAll(".discipline");
+const alertModal = document.querySelector(".alert-modal");
+
+const disciplineSelector = n =>{
+        if(classButtons[n].classList.contains("active")){
+            for(let discipline of disciplines){
+                discipline.classList.add("active");
+            }
+        }else{
+            for(let discipline of disciplines){
+                discipline.classList.remove("active");
+            }
+        }
+}
+// not finished yet
+// disciplines.forEach((item,index)=>{
+//     let active = index;
+//     item.addEventListener("mouseover",()=>{
+//         if(disciplines[active].classList.contains("active")){
+//             console.log("hello");
+//         }else{
+//             alertModal.classList.add("active");
+//         }
+//     });
+// });
