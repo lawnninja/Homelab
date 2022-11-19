@@ -35,7 +35,7 @@ classButtons.forEach((item, index) =>{
 
 //disciplines buttons------------------------------------------------
 const disciplines = document.querySelectorAll(".discipline");
-const alertModal = document.querySelector(".alert-modal");
+const alertModal = document.querySelector(".modal-back");
 
 const disciplineSelector = n =>{
         if(classButtons[n].classList.contains("active")){
@@ -48,14 +48,13 @@ const disciplineSelector = n =>{
             }
         }
 }
-// not finished yet
-// disciplines.forEach((item,index)=>{
-//     let active = index;
-//     item.addEventListener("mouseover",()=>{
-//         if(disciplines[active].classList.contains("active")){
-//             console.log("hello");
-//         }else{
-//             alertModal.classList.add("active");
-//         }
-//     });
-// });
+disciplines.forEach((item,index)=>{
+    let active = index;
+    item.addEventListener("mouseover",()=>{
+        if(disciplines[active].classList.contains("active")){
+            console.log("hello");
+        }else{
+            alertModal.classList.add("active");
+        }
+    });
+});
