@@ -97,8 +97,7 @@ h2 {
 
 .banner {
   border-radius: 15px;
-  flex: 1 1 0;
-  width: 92.5%;
+  position: static;
   top: 1vmin;
   margin: 0 auto;
   padding: 3vw;
@@ -107,7 +106,6 @@ h2 {
   font-size: 200%;
   background-image: url("../img/border img.png");
   background-repeat: no-repeat;
-  background-position: 90%;
   background-size: 450px;
   display: flex;
   flex-direction: column;
@@ -185,8 +183,11 @@ h2 {
   transition: all 0.5s;
   transition-timing-function: ease-in-out;
 }
-
 .classes.active {
+  background-color: #a66cff;
+  color: #F3F3F3;
+}
+.classes:hover {
   background-color: #a66cff;
   color: #F3F3F3;
 }
@@ -349,10 +350,6 @@ h2 {
   align-self: center;
 }
 
-.minwidth {
-  min-width: 200px;
-}
-
 nav ul li a, nav ul li a:after, nav ul li a:before {
   transition: all 0.5s;
   transition-timing-function: ease-in-out;
@@ -470,7 +467,7 @@ nav.stroke ul {
 nav.stroke ul li {
   display: flex;
 }
-nav.stroke a {
+nav.stroke ul li a {
   position: relative;
   display: block;
   text-decoration: none;
@@ -484,10 +481,10 @@ nav.stroke a {
   height: -moz-fit-content;
   height: fit-content;
 }
-nav.stroke a:hover {
+nav.stroke ul li a:hover {
   color: #a66cff;
 }
-nav.stroke a:after {
+nav.stroke ul li a:after {
   position: absolute;
   top: 120%;
   bottom: 0;
@@ -501,15 +498,15 @@ nav.stroke a:after {
   background: #424242;
   height: 20%;
 }
-nav.stroke a:after {
+nav.stroke ul li a:after {
   transition: all 0.5s;
   transition-timing-function: ease-in-out;
 }
-nav.stroke a.selectednav:after {
+nav.stroke ul li a.selectednav:after {
   width: 30%;
   height: 20%;
 }
-nav.stroke a:hover:after {
+nav.stroke ul li a:hover:after {
   width: 100%;
   background-color: #a66cff;
 }
@@ -542,22 +539,14 @@ nav.stroke a:hover:after {
   height: -moz-fit-content;
   height: fit-content;
   transition: all 0.5s ease-out;
-  pointer-events: all;
 }
-.disciplines-block a.active {
-  pointer-events: all;
-}
-.disciplines-block a.active svg {
-  filter: grayscale(0%);
-  opacity: 0.9;
-}
-.disciplines-block a.active:hover {
+.disciplines-block a:hover {
   background-color: #2c365e;
 }
-.disciplines-block a.active:hover p {
+.disciplines-block a:hover p {
   color: #a66cff;
 }
-.disciplines-block a.active:hover .circle {
+.disciplines-block a:hover .circle {
   fill: #a66cff;
 }
 @media (max-width: 1400px) {
@@ -595,10 +584,7 @@ nav.stroke a:hover:after {
   }
 }
 .disciplines-block a svg {
-  filter: grayscale(100%);
-  opacity: 0.9;
   width: 100%;
-  transition: all 0.5s ease-out;
 }
 .disciplines-block a svg .circle {
   fill: #2c365e;
