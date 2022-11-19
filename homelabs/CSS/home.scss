@@ -6,6 +6,7 @@ $selected: #000000;
 $background: #e9e9e9;
 $textColor:#242424;
 $inactiveTextColor:#F3F3F3;
+
 @mixin corners($radius: 15px) {
     border-radius: $radius;
 }
@@ -88,8 +89,7 @@ h2 {
 
 .banner {
     @include corners;
-    flex: 1 1 0;
-    width: 92.5%;
+    position: static;
     top: 1vmin;
     margin: 0 auto;
     padding: 3vw;
@@ -98,7 +98,6 @@ h2 {
     font-size: 200%;
     background-image: url('../img/border\ img.png');
     background-repeat: no-repeat;
-    background-position: 90%;
     background-size: 450px;
     display: flex;
     flex-direction: column;
@@ -128,11 +127,14 @@ h2 {
     @include transition;
     color: $not_selected;
     background-color: $background;
-}
-.classes.active{
-    background-color: $sec_color;
-    color: $inactiveTextColor;
-
+    &.active{
+        background-color: $sec_color;
+        color: $inactiveTextColor;
+    }
+    &:hover{
+        background-color: $sec_color;
+        color: $inactiveTextColor; 
+    }
 }
 
 .matter {
@@ -192,6 +194,7 @@ h2 {
         text-align: center;
     }
 }
+
 .showans {
     @include corners;
     @include b_padding;
@@ -276,10 +279,6 @@ h2 {
     align-self: center;
 }
 
-.minwidth {
-    min-width: 200px;
-}
-
 //navbar------------------------------------------------------
 
 nav ul li a {
@@ -290,6 +289,7 @@ nav ul li a {
         transition-timing-function: ease-in-out;
     }
 }
+
 header{
     padding: 15px 30px;
     background-color: $background; 
@@ -385,49 +385,50 @@ nav.stroke {
             flex-direction: column;
 
         }
+        li {
+            display: flex;
+            a {
+                position: relative;
+                display: block;
+                text-decoration: none;
+                color: $not_selected;
+                font-weight: 400;
+                text-transform: uppercase;
+                width: max-content;
+                height: fit-content;
+                &:hover {
+                    color: $sec_color;
+                }
+                    &:after {
+                    @include transition();
+                    position: absolute;
+                    top: 120%;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    width: 0%;
+                    content: ".";
+                    border-radius: 900px;
+                    color: transparent;
+                    background: $not_selected;
+                    height: 20%;
+                }
+                &.selectednav:after {
+                    width: 30%;
+                    height: 20%;
+                }
+                &:hover:after {
+                    width: 100%;
+                    background-color: $sec_color;
+                }
+            }
+        }
     }
-    ul li {
-        display: flex;
-    }
+}
 
-        a {
-            position: relative;
-            display: block;
-            text-decoration: none;
-            color: $not_selected;
-            font-weight: 400;
-            text-transform: uppercase;
-            width: max-content;
-            height: fit-content;
-        }
-        a:hover {
-            color: $sec_color;
-        }
-        a:after {
-            @include transition();
-            position: absolute;
-            top: 120%;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 0%;
-            content: ".";
-            border-radius: 900px;
-            color: transparent;
-            background: $not_selected;
-            height: 20%;
-        }
-        a.selectednav:after {
-            width: 30%;
-            height: 20%;
-        }
-        a:hover:after {
-            width: 100%;
-            background-color: $sec_color;
-        }
-    }
 // discipline buttons
+
 .disciplines-block{
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -492,10 +493,7 @@ nav.stroke {
             transition: all .5s ease-out;
         }
         svg{
-            filter: grayscale(100%);
-            opacity: .9;
             width: 100%;
-            transition: all .5s ease-out;
             .circle{
                 fill: $pri_color;
                 transition: all .5s ease-out;
@@ -503,6 +501,7 @@ nav.stroke {
         }
     }
 }
+
 // not finished yet
 //alert-modal-------------------------------------------------------------------------
 // .alert-modal{
@@ -523,6 +522,6 @@ nav.stroke {
 //     &.active{
 //         display: block;    
 //         transform: translateY(0);
-        
+
 //     }
 // }
