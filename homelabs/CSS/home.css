@@ -539,14 +539,22 @@ nav.stroke ul li a:hover:after {
   height: -moz-fit-content;
   height: fit-content;
   transition: all 0.5s ease-out;
+  pointer-events: all;
 }
-.disciplines-block a:hover {
+.disciplines-block a.active {
+  pointer-events: all;
+}
+.disciplines-block a.active svg {
+  filter: grayscale(0%);
+  opacity: 0.9;
+}
+.disciplines-block a.active:hover {
   background-color: #2c365e;
 }
-.disciplines-block a:hover p {
+.disciplines-block a.active:hover p {
   color: #a66cff;
 }
-.disciplines-block a:hover .circle {
+.disciplines-block a.active:hover .circle {
   fill: #a66cff;
 }
 @media (max-width: 1400px) {
