@@ -4,8 +4,8 @@ $sec_color: #a66cff;
 $not_selected: #424242;
 $selected: #000000;
 $background: #e9e9e9;
-$textColor:#242424;
-$inactiveTextColor:#F3F3F3;
+$textColor: #242424;
+$inactiveTextColor: #f3f3f3;
 
 @mixin corners($radius: 15px) {
     border-radius: $radius;
@@ -45,12 +45,17 @@ body {
     font-family: "Work Sans", serif;
     text-decoration: none;
     font-weight: 400;
-    margin-top: 30px;
-    margin-left: 10vw;
-    margin-right: 10vw;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin: 30px max(10vw, 50px);
+    overflow-x: hidden;
+    @include lg {
+        margin: 30px max(5vw, 10px);
+    }
+    @include sm{
+        font-size: .9rem;
+    }
 }
 
 h1,
@@ -61,7 +66,7 @@ h2 {
     text-align: center;
 }
 * {
-     font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 //classes and IDs----------------------------------------------
@@ -82,7 +87,7 @@ h2 {
     @include transition;
     @include button(15px, 10px, 20px);
     color: $inactiveTextColor;
-    @include sm{
+    @include sm {
         @include button(15px, 10px, 16px);
     }
 }
@@ -90,7 +95,7 @@ h2 {
 .banner {
     @include corners;
     position: static;
-    width: 74vw;
+    width: 92.5%;
     top: 1vmin;
     margin: 0 auto;
     padding: 3vw;
@@ -98,7 +103,7 @@ h2 {
     background-color: $pri_color;
     background-position: 90%;
     font-size: 200%;
-    background-image: url('../img/border\ img.png');
+    background-image: url("../img/border\ img.png");
     background-repeat: no-repeat;
     background-size: 450px;
     display: flex;
@@ -106,20 +111,25 @@ h2 {
     gap: 20px;
     h1 {
         text-align: left;
-        @include sm{
+        @include sm {
             font-size: max(7.1vw, 30px);
+            margin-left: 10px;
         }
     }
-    button{
+    button {
         @include button(35px, 15px, 20px);
-        @include sm{
-            @include button(20px, 10px, 20px )
+        @include sm {
+            @include button(20px, 10px, 20px);
+            margin-left: 10px;
         }
     }
-    @include sm{
+    @include md {
+        width: 92.5%;
+    }
+    @include sm {
         background-image: none;
-        width:90%;
-        padding: max(1vw, 24px) max(1vw, 15px);
+        width: 96%;
+        padding: max(1vw, 24px) max(1vw, 6px);
     }
 }
 
@@ -129,13 +139,22 @@ h2 {
     @include transition;
     color: $not_selected;
     background-color: $background;
-    &.active{
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    @include md{
+        font-size: .9rem;
+    }
+    @include sm{
+        font-size: .8rem;
+    }
+    &.active {
         background-color: $sec_color;
         color: $inactiveTextColor;
     }
-    &:hover{
+    &:hover {
         background-color: $sec_color;
-        color: $inactiveTextColor; 
+        color: $inactiveTextColor;
     }
 }
 
@@ -292,43 +311,43 @@ nav ul li a {
     }
 }
 
-header{
+header {
     padding: 15px 30px;
-    background-color: $background; 
+    background-color: $background;
     display: flex;
     align-items: center;
-    gap:20px;
+    gap: 30px;
     @include corners;
-    a{
+    a {
         cursor: pointer;
     }
-    @include md{
+    @include md {
         justify-content: space-between;
     }
-    .burger{
+    .burger {
         display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 7px;
         cursor: pointer;
-        .line{
+        .line {
             border-radius: 20px;
             background-color: $pri_color;
         }
-        .line:nth-child(1){
+        .line:nth-child(1) {
             width: 40px;
             height: 6px;
         }
-        .line:nth-child(2){
+        .line:nth-child(2) {
             width: 50px;
-            height: 6px
+            height: 6px;
         }
-        .line:nth-child(3){
+        .line:nth-child(3) {
             width: 40px;
             height: 6px;
         }
-        @include md{
+        @include md {
             display: flex;
         }
     }
@@ -339,7 +358,7 @@ nav.stroke {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    @include md{
+    @include md {
         position: absolute;
         background-color: $background;
         padding: 20px 0;
@@ -352,40 +371,39 @@ nav.stroke {
         z-index: -1;
         transition: all 0.5s ease-out;
         transform: translateY(80px);
-        &.active{
+        &.active {
             transform: translateY(100px);
             opacity: 1;
             z-index: 20;
         }
     }
-    @include sm{
+    @include sm {
         padding: max(6vw, 5px) 0;
         flex-direction: column;
-        width: 95%;
+        width: 90%;
         opacity: 0;
-        margin-left:-30px;
+        margin-left: -30px;
         z-index: -1;
         transition: all 0.5s ease-out;
         transform: translateY(180px);
-        &.active{
+        &.active {
             z-index: 20;
-            transform: translateY(max(32vw, 210px));
+            transform: translateY(max(32vw, 190px));
             opacity: 1;
         }
     }
-    ul{
+    ul {
         padding: 0;
         display: flex;
         flex-direction: row;
-        gap:22px;
+        gap: 22px;
         align-items: center;
-        @include md{
+        @include md {
             flex-direction: row;
             gap: 22px;
         }
-        @include sm{
+        @include sm {
             flex-direction: column;
-
         }
         li {
             display: flex;
@@ -401,7 +419,7 @@ nav.stroke {
                 &:hover {
                     color: $sec_color;
                 }
-                    &:after {
+                &:after {
                     @include transition();
                     position: absolute;
                     top: 120%;
@@ -431,18 +449,19 @@ nav.stroke {
 
 // discipline buttons
 
-.disciplines-block{
+.disciplines-block {
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: center;
-    gap:20px;
-    @include md{
+    gap: 20px;
+    @include md {
         grid-template-columns: auto auto;
     }
-    @include sm{
-        grid-template-columns: auto;
+    @include sm {
+        grid-template-columns: auto auto;
+        gap: max(2.85vw, 10px);
     }
-    a{
+    a {
         width: max(15vw, 200px);
         padding: max(3vw, 40px) max(2vw, 20px);
         display: flex;
@@ -451,70 +470,77 @@ nav.stroke {
         border-radius: 20px;
         background-color: $background;
         height: fit-content;
-        transition: all .5s ease-out;
-        pointer-events: all;
-        &.active{
+        transition: all 0.5s ease-out;
+        pointer-events:all;
+        cursor: inherit;
+        &.active {
             pointer-events: all;
-            svg{
-                filter: grayscale(0%);
-                opacity: .9;
+            cursor: pointer;
+            svg {
+                .circle{
+                    fill: $pri_color;
+                }
+                opacity: 0.9;
             }
-            &:hover{
+            &:hover {
                 background-color: #2c365e;
             }
-            &:hover p{
+            &:hover p {
                 color: $sec_color;
             }
-            &:hover .circle{
+            &:hover .circle {
                 fill: $sec_color;
             }
         }
-        @include lg{
-            width: max(18vw, 180px);
+        @include lg {
+            width: max(17vw, 170px);
         }
-        @include md{
-            width: max(36vw, 230px);
-            padding: max(5vw, 40px) max(4vw, 20px);
+        @include md {
+            width: max(34vw, 230px);
+            padding: max(5vw, 30px) max(4vw, 10px);
         }
-        @include sm{
-            width: max(80vw, 230px);
-
+        @include sm {
+            width: max(34vw, 110px);
         }
-        p{
+        p {
             margin: 0;
             font-weight: 700;
             font-size: 2.6vw;
             line-height: 100%;
             color: $textColor;
-            @include md{
+            @include md {
                 font-size: max(3vw, 36px);
             }
-            @include sm{
-                font-size: max(5wv, 30px);
+            @include sm {
+                font-size: max(5vw, 20px);
             }
-            transition: all .5s ease-out;
+            transition: all 0.5s ease-out;
         }
-        svg{
+        svg {
             width: 100%;
-            .circle{
-                fill: $pri_color;
-                transition: all .5s ease-out;
+            .circle {
+                fill: #CECDCD;
+                transition: all 0.5s ease-out;
             }
         }
     }
 }
 // not finished yet
 //alert-modal-------------------------------------------------------------------------
+.alert-block{
+    position: fixed;
+    width: 110vw;
+    height: 110vh;
+    background-color: #00000068;
+    display: none;
+    margin: -30px -10vw;
+    display: flex;
+    justify-content: space-around;
+    padding: 10vw;
     align-items: flex-end;
-    background-color: rgb(0, 0, 0, 0.5);
-    &.active{
-        display: block;    
-        transform: translateY(0); 
-    }
+    align-content: flex-end;
     .alert-modal{
-        transform: translateY(-20px);
-        display: flex;
-        position: fixed;
+        display: block;
         padding: 30px 30px;
         background-color: $background;
         font-weight: 400;
@@ -526,17 +552,7 @@ nav.stroke {
         width: max-content;
         transition: all .5s ease-out;
     }
-}//     font-weight: 400;
-//     font-size: 20px;
-//     line-height: 24px;
-//     color: $sec_color;
-//     border-radius: 20px;
-//     border: solid 2px $sec_color;
-//     margin: 80vh 62vw;
-//     width: max-content;
-//     transition: all .5s ease-out;
-//     &.active{
-//         display: block;    
-//         transform: translateY(0);
-//     }
-// }
+    &.active{
+        display: block;
+    }
+}

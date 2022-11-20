@@ -35,7 +35,7 @@ classButtons.forEach((item, index) =>{
 
 //disciplines buttons------------------------------------------------
 const disciplines = document.querySelectorAll(".discipline");
-const alertModal = document.querySelector(".modal-back");
+const alertModal = document.querySelector(".alert-block");
 
 const disciplineSelector = n =>{
         if(classButtons[n].classList.contains("active")){
